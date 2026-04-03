@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🤖 Agent Team Hub</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+      min-height: 100vh;
+      color: #fff;
+      padding: 20px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    
+    h1 {
+      text-align: center;
+      font-size: 3em;
+      margin: 30px 0;
+      background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #FFE66D);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      text-align: center;
+      opacity: 0.7;
+      margin-bottom: 40px;
+      font-size: 1.2em;
+    }
+    
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .agent-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 25px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .agent-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    .agent-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8em;
+    }
+    .agent-name { font-size: 1.4em; font-weight: bold; }
+    .agent-role { opacity: 0.7; font-size: 0.9em; }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      margin-top: 10px;
+    }
+    .status-online { background: #4ade80; color: #000; }
+    
+    .section {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+    .section h2 { margin-bottom: 15px; font-size: 1.5em; }
+    
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .link-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 15px;
+      text-decoration: none;
+      color: #fff;
+      transition: transform 0.2s, background 0.2s;
+      display: block;
+    }
+    .link-card:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.1);
+    }
+    .link-title { font-weight: bold; margin-bottom: 5px; }
+    .link-desc { font-size: 0.85em; opacity: 0.7; }
+    .link-status {
+      font-size: 0.75em;
+      padding: 2px 8px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-top: 8px;
+    }
+    .link-status.running { background: #4ade80; color: #000; }
+    .link-status.setup { background: #fbbf24; color: #000; }
+    
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .project-name {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .progress-bar {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      height: 8px;
+      overflow: hidden;
+      margin: 10px 0;
+    }
+    .progress-fill {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+    .progress-text { font-size: 0.9em; opacity: 0.8; }
+    
+    .footer {
+      text-align: center;
+      opacity: 0.5;
+      margin-top: 40px;
+      padding: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      h1 { font-size: 2em; }
+      .team { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🤖 Agent Team Hub</h1>
+    <p class="subtitle">Dennis + Hermes + MJ + Pepper | 24/7 AI Workforce</p>
+    
+    <!-- Team Members -->
+    <div class="team">
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-avatar" style="background: #FF6B6B;">H</div>
+          <div>
+            <div class="agent-name">Hermes</div>
+            <div class="agent-role">Research & Analysis</div>
+          </div>
+        </div>
+        <p>Desktop control, browser automation, memory management, web research</p>
+        <span class="status-badge status-online">🟢 Online</span>
+      </div>
+      
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-avatar" style="background: #4ECDC4;">M</div>
+          <div>
+            <div class="agent-name">MJ</div>
+            <div class="agent-role">Code Builder</div>
+          </div>
+        </div>
+        <p>JavaScript, Python, bots, automation, PepperClaw development</p>
+        <span class="status-badge status-online">🟢 Online</span>
+      </div>
+      
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-avatar" style="background: #FFE66D;">P</div>
+          <div>
+            <div class="agent-name">Pepper</div>
+            <div class="agent-role">Supervisor</div>
+          </div>
+        </div>
+        <p>Strategy, coordination, MetaClaw, project management</p>
+        <span class="status-badge status-online">🟢 Online</span>
+      </div>
+      
+      <div class="agent-card">
+        <div class="agent-header">
+          <div class="agent-avatar" style="background: #667eea;">N</div>
+          <div>
+            <div class="agent-name">Nerve</div>
+            <div class="agent-role">Command Center</div>
+          </div>
+        </div>
+        <p>Dashboard, task management, agent monitoring</p>
+        <span class="status-badge status-online">🟢 Online</span>
+      </div>
+    </div>
+    
+    <!-- Live Links -->
+    <div class="section">
+      <h2>🔗 Live Services</h2>
+      <div class="links-grid">
+        <a href="#" class="link-card" onclick="alert('Nerve Dashboard - Open locally at http://localhost:3456')">
+          <div class="link-title">🔥 Nerve Dashboard</div>
+          <div class="link-desc">Command center for all agents</div>
+          <span class="link-status running">🟢 Running</span>
+        </a>
+        
+        <a href="https://plangent-luise-hypermodest.ngrok-free.app" target="_blank" class="link-card">
+          <div class="link-title">🌐 Nerve (Public)</div>
+          <div class="link-desc">Access Nerve from anywhere</div>
+          <span class="link-status running">🟢 Live</span>
+        </a>
+        
+        <a href="https://t.me/H2_HermeBot" target="_blank" class="link-card">
+          <div class="link-title">📱 Hermes Bot</div>
+          <div class="link-desc">@H2_HermeBot on Telegram</div>
+          <span class="link-status running">🟢 Active</span>
+        </a>
+        
+        <a href="https://t.me/MJMiniJarvis_bot" target="_blank" class="link-card">
+          <div class="link-title">⚡ MJ Bot</div>
+          <div class="link-desc">@MJMiniJarvis_bot on Telegram</div>
+          <span class="link-status running">🟢 Active</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Projects -->
+    <div class="section">
+      <h2>📋 Active Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <div class="project-name">🌶️ PepperClaw</div>
+          <p style="opacity:0.7;font-size:0.9em;">Real Estate Agent AI Platform</p>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:70%;background:#FF6B6B;"></div>
+          </div>
+          <div class="progress-text">70% - Deploy & WhatsApp</div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-name">🔥 Nerve Dashboard</div>
+          <p style="opacity:0.7;font-size:0.9em;">AI Agent Command Center</p>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:60%;background:#667eea;"></div>
+          </div>
+          <div class="progress-text">60% - Add more features</div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-name">📚 Agency Agents</div>
+          <p style="opacity:0.7;font-size:0.9em;">141+ AI Agent Templates</p>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:90%;background:#4ECDC4;"></div>
+          </div>
+          <div class="progress-text">90% - Documentation</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="section">
+      <h2>🚀 Quick Actions</h2>
+      <div class="links-grid">
+        <a href="https://github.com/msitarzewski/agency-agents" target="_blank" class="link-card">
+          <div class="link-title">📂 GitHub</div>
+          <div class="link-desc">All code repositories</div>
+        </a>
+        
+        <a href="#" class="link-card" onclick="alert('Firebase Console - https://console.firebase.google.com')">
+          <div class="link-title">🔥 Firebase</div>
+          <div class="link-desc">Hosting, Storage, Database</div>
+          <span class="link-status setup">⚙️ Setup Required</span>
+        </a>
+        
+        <a href="https://openclaw.ai" target="_blank" class="link-card">
+          <div class="link-title">🦞 OpenClaw</div>
+          <div class="link-desc">AI Agent Framework v4.2</div>
+        </a>
+        
+        <a href="https://github.com/aiming-lab/MetaClaw" target="_blank" class="link-card">
+          <div class="link-title">🧠 MetaClaw</div>
+          <div class="link-desc">Self-Evolving AI v0.4.0</div>
+        </a>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Agent Team Hub | Updated: <span id="date"></span></p>
+      <p>Built with ❤️ by Dennis + AI Agents</p>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('date').textContent = new Date().toLocaleDateString();
+  </script>
+</body>
+</html>
