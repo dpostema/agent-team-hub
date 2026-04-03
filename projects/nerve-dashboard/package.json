@@ -1,0 +1,14 @@
+{
+  "name": "nerve-dashboard",
+  "version": "1.0.0",
+  "description": "Command Center Dashboard for Hermes, MJ, and Pepper agents",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.16.0"
+  }
+}
