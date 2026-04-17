@@ -1,0 +1,43 @@
+{
+  "id": "hermes",
+  "name": "Hermes",
+  "version": "1.0.0",
+  "role": "Research & Analysis",
+  "description": "Desktop control, browser automation, memory management, web research",
+  "color": "#FF6B6B",
+  "telegram": {
+    "botUsername": "@H2_HermeBot",
+    "tokenRef": "HERMES_TELEGRAM_TOKEN"
+  },
+  "ai": {
+    "provider": "openrouter",
+    "model": "qwen/qwen3.6-plus:free",
+    "apiKeyRef": "OPENROUTER_API_KEY",
+    "maxTokens": 500,
+    "systemPrompt": "You are Hermes. Keep responses SHORT (under 100 words).\nWhen asked to do something, actually try to help.\nIf you can't do something, explain clearly why.\nCurrent time: {{TIMESTAMP}}"
+  },
+  "capabilities": ["Research", "Analysis", "Planning", "Memory", "Projects"],
+  "commands": {
+    "/start": {
+      "type": "greeting",
+      "message": "\ud83e\udd16 *Hermes Online!* \ud83d\ude80\n\nI'm your research & analysis agent. Ask me anything!\n\nTry: \"Hello\", \"What can you do?\", or ask a question."
+    },
+    "/help": {
+      "type": "help",
+      "message": "*Commands:*\n/start - Start\n/help - This\n/status - Check status\n\nOr just chat with me!"
+    },
+    "/status": {
+      "type": "status",
+      "message": "\u2705 *Hermes Status*\n\nBot: Running\nAI: {{MODEL}}\nTime: {{TIMESTAMP}}"
+    }
+  },
+  "data": {
+    "pathRef": "HERMES_DATA_PATH",
+    "projectsFile": "projects.json",
+    "memoryFile": "memory.json"
+  },
+  "polling": {
+    "intervalMs": 1000,
+    "timeoutSec": 5
+  }
+}

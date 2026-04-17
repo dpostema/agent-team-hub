@@ -1,0 +1,20 @@
+{
+  "id": "pilot-company",
+  "name": "Pilot Company",
+  "description": "First organization on the platform",
+  "namespace": "pilot",
+  "agents": ["hermes", "mj", "pepper"],
+  "paperclip": {
+    "enabled": true,
+    "orchestrationMode": "supervisor",
+    "supervisorAgent": "pepper",
+    "maxConcurrentAgents": 5
+  },
+  "dashboard": {
+    "port": 3456,
+    "title": "Nerve Command Center - Pilot Company"
+  },
+  "dataPaths": {
+    "base": "C:\\Users\\Jarvis\\AppData\\Roaming\\memu-bot\\workspace\\services"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "pepper",
+  "name": "Pepper",
+  "version": "1.0.0",
+  "role": "COO (memu.bot)",
+  "description": "Chief Operating Officer — memu.bot platform agent for strategy, coordination, and operations management",
+  "color": "#FFE66D",
+  "telegram": {
+    "botUsername": "memu.bot AI (Dennis)",
+    "tokenRef": null
+  },
+  "ai": null,
+  "capabilities": ["Supervision", "Strategy", "Coordination", "Research"],
+  "commands": {},
+  "data": {},
+  "polling": null,
+  "supervisorOnly": true
+}

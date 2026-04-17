@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Company Configuration",
+  "description": "Schema for OpenClaw company/organization configuration",
+  "type": "object",
+  "required": ["id", "name", "agents", "paperclip", "dashboard"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Unique company identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name for the company"
+    },
+    "description": {
+      "type": "string"
+    },
+    "namespace": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*$",
+      "description": "Short namespace prefix for this company"
+    },
+    "agents": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Array of agent IDs belonging to this company"
+    },
+    "paperclip": {
+      "type": "object",
+      "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "orchestrationMode": {
+          "type": "string",
+          "enum": ["supervisor", "autonomous", "manual"]
+        },
+        "supervisorAgent": { "type": "string" },
+        "maxConcurrentAgents": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "dashboard": {
+      "type": "object",
+      "required": ["port"],
+      "properties": {
+        "port": { "type": "integer" },
+        "title": { "type": "string" }
+      }
+    },
+    "dataPaths": {
+      "type": "object",
+      "properties": {
+        "base": { "type": "string" }
+      }
+    }
+  }
+}

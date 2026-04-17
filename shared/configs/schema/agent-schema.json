@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Configuration",
+  "description": "Schema for OpenClaw agent configuration files",
+  "type": "object",
+  "required": ["id", "name", "version", "role", "capabilities"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Unique agent identifier (lowercase, alphanumeric with hyphens)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name for the agent"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "role": {
+      "type": "string",
+      "description": "Agent's primary role description"
+    },
+    "description": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$"
+    },
+    "telegram": {
+      "type": ["object", "null"],
+      "properties": {
+        "botUsername": { "type": "string" },
+        "tokenRef": { "type": ["string", "null"] }
+      }
+    },
+    "ai": {
+      "type": ["object", "null"],
+      "properties": {
+        "provider": { "type": "string", "enum": ["openrouter", "openai", "anthropic"] },
+        "model": { "type": "string" },
+        "apiKeyRef": { "type": "string" },
+        "maxTokens": { "type": "integer", "minimum": 1 },
+        "systemPrompt": { "type": "string" }
+      },
+      "required": ["provider", "model", "apiKeyRef", "maxTokens", "systemPrompt"]
+    },
+    "capabilities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "commands": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "message": { "type": "string" }
+        },
+        "required": ["type", "message"]
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "pathRef": { "type": "string" },
+        "projectsFile": { "type": "string" },
+        "memoryFile": { "type": "string" }
+      }
+    },
+    "polling": {
+      "type": ["object", "null"],
+      "properties": {
+        "intervalMs": { "type": "integer", "minimum": 100 },
+        "timeoutSec": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "supervisorOnly": {
+      "type": "boolean",
+      "description": "If true, agent has no bot process — dashboard-only presence"
+    }
+  }
+}

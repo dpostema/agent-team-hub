@@ -1,11 +1,15 @@
 {
   "name": "nerve-dashboard",
   "version": "1.0.0",
-  "description": "Command Center Dashboard for Hermes, MJ, and Pepper agents",
+  "description": "Config-driven Command Center Dashboard with Paperclip orchestration",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "production": "node nerve-server.js",
+    "factory": "node agent-factory.js",
+    "paperclip": "node paperclip.js",
+    "validate": "node paperclip.js pilot-company"
   },
   "dependencies": {
     "express": "^4.18.2",

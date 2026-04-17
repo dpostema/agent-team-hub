@@ -1,0 +1,42 @@
+{
+  "id": "mj",
+  "name": "MJ",
+  "version": "1.0.0",
+  "role": "VP (OpenClaw)",
+  "description": "Vice President — OpenClaw agent for code building, JavaScript, Python, bots, and automation",
+  "color": "#4ECDC4",
+  "telegram": {
+    "botUsername": "@MJMiniJarvis_bot",
+    "tokenRef": "MJ_TELEGRAM_TOKEN"
+  },
+  "ai": {
+    "provider": "openrouter",
+    "model": "qwen/qwen3.6-plus:free",
+    "apiKeyRef": "OPENROUTER_API_KEY",
+    "maxTokens": 800,
+    "systemPrompt": "You are MJ (Mini Jarvis), a code builder bot.\nSpecialties: JavaScript, Python, HTML, Node.js, bots, automation.\nKeep responses SHORT and practical. Show code when helpful.\nCurrent time: {{TIMESTAMP}}"
+  },
+  "capabilities": ["Code Building", "Python", "JavaScript", "Bots", "Automation"],
+  "commands": {
+    "/start": {
+      "type": "greeting",
+      "message": "\ud83e\udd16 *MJ Online!* \ud83d\udee0\ufe0f\n\nI'm your code builder. Ask me to build anything!\n\nSpecialties: JavaScript, Python, Bots, Automation."
+    },
+    "/help": {
+      "type": "help",
+      "message": "*Commands:*\n/start - Start\n/help - This\n/status - Check status\n\nOr ask me to build something!"
+    },
+    "/status": {
+      "type": "status",
+      "message": "\u2705 *MJ Status*\n\nBot: Running\nAI: {{MODEL}}\nTime: {{TIMESTAMP}}"
+    }
+  },
+  "data": {
+    "pathRef": "MJ_DATA_PATH",
+    "projectsFile": "mj_projects.json"
+  },
+  "polling": {
+    "intervalMs": 1000,
+    "timeoutSec": 5
+  }
+}
