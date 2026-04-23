@@ -31,10 +31,12 @@
       "visibility": "all"
     },
     "max": {
-      "title": "CTO",
-      "reportsTo": "jarvis",
-      "oversees": [],
-      "visibility": "all"
+      "title": "CTO (Claude)",
+      "reportsTo": "dennis",
+      "oversees": ["jarvis", "alfred", "shavon", "pepper", "mj", "hermes"],
+      "visibility": "all",
+      "remoteAccess": true,
+      "canDispatch": true
     },
     "shavon": {
       "title": "EA - Autonomous Division",
