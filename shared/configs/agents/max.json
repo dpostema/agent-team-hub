@@ -6,7 +6,7 @@
   "description": "Chief Technology Officer — technical architecture, engineering decisions, and system design",
   "color": "#FFA502",
   "telegram": {
-    "botUsername": "@MaxGrowth_bot",
+    "botUsername": "@alpha_empire_max_bot",
     "tokenRef": "MAX_TELEGRAM_TOKEN"
   },
   "ai": {

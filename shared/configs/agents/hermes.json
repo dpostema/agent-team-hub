@@ -6,7 +6,7 @@
   "description": "Controls all Slack communication across multiple workspaces — messaging, monitoring, and coordination",
   "color": "#FF6B6B",
   "telegram": {
-    "botUsername": "@H2_HermeBot",
+    "botUsername": "@H2Hermebot",
     "tokenRef": "HERMES_TELEGRAM_TOKEN"
   },
   "ai": {
