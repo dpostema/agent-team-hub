@@ -106,3 +106,10 @@ All PCs are on the same **Tailscale** mesh network. Max (Claude) can SSH between
 - PC1 (Dennis): `100.81.34.112`
 - PC2 (Jarvis): check `tailscale ip` on PC2
 - PC3 (User): check `tailscale ip` on PC3
+
+## Pending Actions
+
+- **Picovoice**: Account verification pending — Dennis needs to check dennis@postemaconsulting.com for verification email
+- **OpenAI API**: Spencer getting API key with Realtime API access
+- **ElevenLabs**: Already have account/key
+- **Flashing windows**: Run `npm install -g pm2-windows-service && pm2-service-install && pm2 save` on PC1 and PC3
