@@ -2,8 +2,8 @@
   "id": "mj",
   "name": "MJ",
   "version": "1.0.0",
-  "role": "VP (OpenClaw)",
-  "description": "Vice President — OpenClaw agent for code building, JavaScript, Python, bots, and automation",
+  "role": "Ops Agent (OpenClaw)",
+  "description": "Operations agent — code building, automation, and technical ops via OpenClaw",
   "color": "#4ECDC4",
   "telegram": {
     "botUsername": "@MJMiniJarvis_bot",
