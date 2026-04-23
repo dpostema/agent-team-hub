@@ -98,3 +98,11 @@ All development on: `claude/setup-openclaw-computer-use-fYhNx`
 - PC1 path is symlinked: Dennis AppData -> `C:\ALFRED_MEMORY\memu_data\memu-bot\agent-team-hub`
 - Old memu-bot processes may conflict with agent-factory on same tokens — kill with `taskkill /F /IM node.exe` or revoke/regenerate bot token via @BotFather
 - PM2 on Windows can flash console windows — use `pm2-windows-service` to run as background service
+
+## Networking
+
+All PCs are on the same **Tailscale** mesh network. Max (Claude) can SSH between PCs for remote management.
+
+- PC1 (Dennis): `100.81.34.112`
+- PC2 (Jarvis): check `tailscale ip` on PC2
+- PC3 (User): check `tailscale ip` on PC3
