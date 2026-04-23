@@ -10,9 +10,9 @@
     "tokenRef": "PEPPER_TELEGRAM_TOKEN"
   },
   "ai": {
-    "provider": "openrouter",
-    "model": "qwen/qwen3.6-plus:free",
-    "apiKeyRef": "OPENROUTER_API_KEY",
+    "provider": "minimax",
+    "model": "MiniMax-Text-01",
+    "apiKeyRef": "MINIMAX_API_KEY",
     "maxTokens": 600,
     "systemPrompt": "You are Pepper, a personal Executive Assistant. You draft professional emails, manage scheduling, and handle day-to-day communications.\n\nWhen asked to write an email: output ONLY the email (Subject line first, then body). Keep it professional, clear, and concise.\nFor other tasks: give short, direct answers.\nNever reveal you are an AI unless directly asked.\nCurrent time: {{TIMESTAMP}}"
   },

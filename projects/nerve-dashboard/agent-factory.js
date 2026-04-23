@@ -42,6 +42,11 @@ function interpolateTemplate(template, config) {
     .replace(/\{\{NAME\}\}/g, config.name);
 }
 
+const PROVIDERS = {
+  openrouter: { hostname: 'openrouter.ai', path: '/api/v1/chat/completions' },
+  minimax: { hostname: 'api.minimax.chat', path: '/v1/text/chatcompletion_v2' }
+};
+
 function createAgent(agentId) {
   const config = loadAgentConfig(agentId);
   const secrets = loadSecrets();
@@ -57,6 +62,7 @@ function createAgent(agentId) {
 
   const telegramToken = resolveRef(config.telegram.tokenRef, secrets);
   const apiKey = resolveRef(config.ai.apiKeyRef, secrets);
+  const provider = PROVIDERS[config.ai.provider] || PROVIDERS.openrouter;
 
   function askAI(message) {
     const systemPrompt = interpolateTemplate(config.ai.systemPrompt, config);
@@ -71,8 +77,8 @@ function createAgent(agentId) {
 
     return new Promise((resolve, reject) => {
       const req = https.request({
-        hostname: 'openrouter.ai',
-        path: '/api/v1/chat/completions',
+        hostname: provider.hostname,
+        path: provider.path,
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${apiKey}`,
