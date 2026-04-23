@@ -85,8 +85,14 @@ function createAgent(agentId) {
         res.on('end', () => {
           try {
             const parsed = JSON.parse(body);
-            resolve(parsed.choices?.[0]?.message?.content || 'No response');
+            if (parsed.choices?.[0]?.message?.content) {
+              resolve(parsed.choices[0].message.content);
+            } else {
+              console.log(`[${config.name}] AI response issue:`, JSON.stringify(parsed).slice(0, 300));
+              resolve(parsed.error?.message || 'No response from AI');
+            }
           } catch (e) {
+            console.log(`[${config.name}] Raw response:`, body.slice(0, 300));
             resolve('Error parsing response');
           }
         });
