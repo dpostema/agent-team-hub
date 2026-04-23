@@ -110,6 +110,6 @@ All PCs are on the same **Tailscale** mesh network. Max (Claude) can SSH between
 ## Pending Actions
 
 - **Picovoice**: Account verification pending — Dennis needs to check dennis@postemaconsulting.com for verification email
-- **OpenAI API**: Spencer getting API key with Realtime API access
+- **OpenAI API**: Key received — add to secrets.local.json as OPENAI_API_KEY on all PCs
 - **ElevenLabs**: Already have account/key
 - **Flashing windows**: Run `npm install -g pm2-windows-service && pm2-service-install && pm2 save` on PC1 and PC3
