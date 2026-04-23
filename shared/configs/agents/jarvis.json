@@ -6,7 +6,7 @@
   "description": "Primary AI — strategic oversight, coordination, and high-level decision support",
   "color": "#2ED573",
   "telegram": {
-    "botUsername": "@JarvisAI_bot",
+    "botUsername": "@jarvisreturnsbot",
     "tokenRef": "JARVIS_TELEGRAM_TOKEN"
   },
   "ai": {

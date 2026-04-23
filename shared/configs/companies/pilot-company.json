@@ -3,7 +3,7 @@
   "name": "Pilot Company",
   "description": "First organization on the platform",
   "namespace": "pilot",
-  "agents": ["hermes", "mj", "pepper", "jarvis", "alfred", "max"],
+  "agents": ["hermes", "mj", "pepper", "jarvis", "alfred", "shavon"],
   "paperclip": {
     "enabled": true,
     "orchestrationMode": "supervisor",

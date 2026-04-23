@@ -6,7 +6,7 @@
   "description": "Personal assistant — scheduling, reminders, task tracking, and day-to-day support",
   "color": "#A29BFE",
   "telegram": {
-    "botUsername": "@AlfredAssist_bot",
+    "botUsername": "@AlfredReturnsbot",
     "tokenRef": "ALFRED_TELEGRAM_TOKEN"
   },
   "ai": {

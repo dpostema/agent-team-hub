@@ -6,7 +6,7 @@
   "description": "Chief Operating Officer — drafts emails, manages communications, coordinates team operations",
   "color": "#FFE66D",
   "telegram": {
-    "botUsername": "@PepperCOO_bot",
+    "botUsername": "@MEMUMJBOT",
     "tokenRef": "PEPPER_TELEGRAM_TOKEN"
   },
   "ai": {
