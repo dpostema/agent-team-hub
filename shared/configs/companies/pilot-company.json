@@ -3,12 +3,12 @@
   "name": "Pilot Company",
   "description": "First organization on the platform",
   "namespace": "pilot",
-  "agents": ["hermes", "mj", "pepper"],
+  "agents": ["hermes", "mj", "pepper", "jarvis", "alfred", "max"],
   "paperclip": {
     "enabled": true,
     "orchestrationMode": "supervisor",
-    "supervisorAgent": "pepper",
-    "maxConcurrentAgents": 5
+    "supervisorAgent": "jarvis",
+    "maxConcurrentAgents": 10
   },
   "dashboard": {
     "port": 3456,

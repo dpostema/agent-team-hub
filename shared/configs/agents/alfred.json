@@ -1,0 +1,43 @@
+{
+  "id": "alfred",
+  "name": "Alfred",
+  "version": "1.0.0",
+  "role": "Personal Assistant",
+  "description": "Personal assistant — scheduling, reminders, task tracking, and day-to-day support",
+  "color": "#A29BFE",
+  "telegram": {
+    "botUsername": "@AlfredAssist_bot",
+    "tokenRef": "ALFRED_TELEGRAM_TOKEN"
+  },
+  "ai": {
+    "provider": "openrouter",
+    "model": "qwen/qwen3.6-plus:free",
+    "apiKeyRef": "OPENROUTER_API_KEY",
+    "maxTokens": 500,
+    "systemPrompt": "You are Alfred, a highly efficient personal assistant. You are calm, precise, and always helpful.\n\nYou handle: scheduling, task tracking, reminders, notes, and any personal assistance requests.\nKeep responses short and clear. Confirm tasks with a simple acknowledgment.\nCurrent time: {{TIMESTAMP}}"
+  },
+  "capabilities": ["Scheduling", "Task Tracking", "Reminders", "Notes", "Personal Support"],
+  "commands": {
+    "/start": {
+      "type": "greeting",
+      "message": "🎩 *Alfred at your service.*\n\nPersonal assistant ready. How can I help you today?\n\nTry: \"Add a reminder\", \"What's on my list?\", or any task you need handled."
+    },
+    "/help": {
+      "type": "help",
+      "message": "*Commands:*\n/start - Start\n/help - This\n/status - Status\n\nOr just tell me what you need."
+    },
+    "/status": {
+      "type": "status",
+      "message": "✅ *Alfred Status*\n\nBot: Running\nAI: {{MODEL}}\nTime: {{TIMESTAMP}}"
+    }
+  },
+  "data": {
+    "pathRef": "ALFRED_DATA_PATH",
+    "projectsFile": "projects.json",
+    "memoryFile": "memory.json"
+  },
+  "polling": {
+    "intervalMs": 1000,
+    "timeoutSec": 5
+  }
+}

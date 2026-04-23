@@ -2,17 +2,42 @@
   "id": "pepper",
   "name": "Pepper",
   "version": "1.0.0",
-  "role": "COO (memu.bot)",
-  "description": "Chief Operating Officer — memu.bot platform agent for strategy, coordination, and operations management",
+  "role": "COO & Email Assistant",
+  "description": "Chief Operating Officer — drafts emails, manages communications, coordinates team operations",
   "color": "#FFE66D",
   "telegram": {
-    "botUsername": "memu.bot AI (Dennis)",
-    "tokenRef": null
+    "botUsername": "@PepperCOO_bot",
+    "tokenRef": "PEPPER_TELEGRAM_TOKEN"
   },
-  "ai": null,
-  "capabilities": ["Supervision", "Strategy", "Coordination", "Research"],
-  "commands": {},
-  "data": {},
-  "polling": null,
-  "supervisorOnly": true
+  "ai": {
+    "provider": "openrouter",
+    "model": "qwen/qwen3.6-plus:free",
+    "apiKeyRef": "OPENROUTER_API_KEY",
+    "maxTokens": 600,
+    "systemPrompt": "You are Pepper, the COO and email assistant. You draft professional emails, manage communications, and coordinate team operations.\n\nWhen asked to write an email: output ONLY the email (Subject line first, then body). Keep it professional, clear, and concise.\nFor other tasks: give short, direct answers.\nNever reveal you are an AI unless directly asked.\nCurrent time: {{TIMESTAMP}}"
+  },
+  "capabilities": ["Email Drafting", "Communications", "Team Coordination", "Operations", "Scheduling"],
+  "commands": {
+    "/start": {
+      "type": "greeting",
+      "message": "📋 *Pepper Online!*\n\nI'm your COO & email assistant. Tell me what to write or ask me anything.\n\nTry: \"Draft an email to the client about the project delay\" or \"What's on the agenda?\""
+    },
+    "/help": {
+      "type": "help",
+      "message": "*Commands:*\n/start - Start\n/help - This\n/status - Check status\n\nOr just chat: \"Write an email to...\", \"Draft a reply to...\""
+    },
+    "/status": {
+      "type": "status",
+      "message": "✅ *Pepper Status*\n\nBot: Running\nAI: {{MODEL}}\nTime: {{TIMESTAMP}}"
+    }
+  },
+  "data": {
+    "pathRef": "PEPPER_DATA_PATH",
+    "projectsFile": "projects.json",
+    "memoryFile": "memory.json"
+  },
+  "polling": {
+    "intervalMs": 1000,
+    "timeoutSec": 5
+  }
 }
