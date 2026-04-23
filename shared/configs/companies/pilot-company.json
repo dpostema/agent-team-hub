@@ -4,10 +4,68 @@
   "description": "First organization on the platform",
   "namespace": "pilot",
   "agents": ["jarvis", "alfred", "max", "shavon", "pepper", "mj", "hermes"],
+  "teams": {
+    "a-team": {
+      "name": "Autonomous Division",
+      "lead": "jarvis",
+      "members": ["jarvis", "alfred", "max", "shavon"]
+    },
+    "b-team": {
+      "name": "Operations",
+      "lead": "pepper",
+      "members": ["pepper", "mj", "hermes"]
+    }
+  },
+  "hierarchy": {
+    "alfred": {
+      "title": "COO - Autonomous Division",
+      "reportsTo": "dennis",
+      "oversees": ["jarvis", "max", "shavon", "pepper", "mj", "hermes"],
+      "visibility": "all"
+    },
+    "jarvis": {
+      "title": "VP - Autonomous Division & Orchestrator",
+      "reportsTo": "alfred",
+      "oversees": ["max", "shavon"],
+      "manages": ["mj", "hermes", "pepper"],
+      "visibility": "all"
+    },
+    "max": {
+      "title": "CTO",
+      "reportsTo": "jarvis",
+      "oversees": [],
+      "visibility": "all"
+    },
+    "shavon": {
+      "title": "EA - Autonomous Division",
+      "reportsTo": "jarvis",
+      "oversees": [],
+      "visibility": ["jarvis", "alfred", "max"]
+    },
+    "pepper": {
+      "title": "Personal EA",
+      "reportsTo": "dennis",
+      "oversees": [],
+      "visibility": ["mj", "hermes"]
+    },
+    "mj": {
+      "title": "Ops Agent",
+      "reportsTo": "jarvis",
+      "oversees": [],
+      "visibility": ["pepper", "hermes"]
+    },
+    "hermes": {
+      "title": "Slack Communications Manager",
+      "reportsTo": "jarvis",
+      "oversees": [],
+      "visibility": "all"
+    }
+  },
   "paperclip": {
     "enabled": true,
     "orchestrationMode": "supervisor",
-    "supervisorAgent": "jarvis",
+    "supervisorAgent": "alfred",
+    "orchestratorAgent": "jarvis",
     "maxConcurrentAgents": 10
   },
   "dashboard": {

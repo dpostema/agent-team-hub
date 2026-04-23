@@ -67,6 +67,8 @@ class Paperclip {
         ? this.resolveSecret(config.data.pathRef)
         : null;
 
+      const hierarchy = this.company.hierarchy ? this.company.hierarchy[agentId] : null;
+
       registry[agentId] = {
         name: config.name,
         status: config.supervisorOnly ? 'online' : 'running',
@@ -74,6 +76,10 @@ class Paperclip {
         capabilities: config.capabilities,
         color: config.color,
         role: config.role,
+        reportsTo: hierarchy ? hierarchy.reportsTo : null,
+        oversees: hierarchy ? hierarchy.oversees : [],
+        visibility: hierarchy ? hierarchy.visibility : [],
+        team: this.getAgentTeam(agentId),
         projects: this.loadAgentProjects(agentId, dataPath),
         ...(config.data && config.data.memoryFile
           ? { memory: this.loadAgentMemory(agentId, dataPath) }
@@ -81,6 +87,44 @@ class Paperclip {
       };
     }
     return registry;
+  }
+
+  getAgentTeam(agentId) {
+    if (!this.company.teams) return null;
+    for (const [teamId, team] of Object.entries(this.company.teams)) {
+      if (team.members.includes(agentId)) {
+        return { id: teamId, name: team.name, lead: team.lead };
+      }
+    }
+    return null;
+  }
+
+  getHierarchy() {
+    return this.company.hierarchy || {};
+  }
+
+  getVisibleAgents(agentId) {
+    const hierarchy = this.company.hierarchy;
+    if (!hierarchy || !hierarchy[agentId]) return this.listAgentIds();
+    const vis = hierarchy[agentId].visibility;
+    if (vis === 'all') return this.listAgentIds();
+    return vis;
+  }
+
+  getOrgChart() {
+    const chart = {};
+    const hierarchy = this.company.hierarchy || {};
+    for (const [agentId, info] of Object.entries(hierarchy)) {
+      const config = this.agentConfigs[agentId];
+      chart[agentId] = {
+        name: config ? config.name : agentId,
+        title: info.title,
+        reportsTo: info.reportsTo,
+        oversees: info.oversees,
+        team: this.getAgentTeam(agentId)
+      };
+    }
+    return chart;
   }
 
   loadAgentProjects(agentId, dataPath) {
@@ -155,8 +199,30 @@ if (require.main === module) {
     console.log('\nAgent Registry:');
     const registry = paperclip.getAgentRegistry();
     for (const [id, agent] of Object.entries(registry)) {
-      console.log(`  ${id}: ${agent.name} (${agent.role}) [${agent.status}] — ${agent.capabilities.join(', ')}`);
+      const reports = agent.reportsTo ? ` -> reports to ${agent.reportsTo}` : '';
+      const oversees = agent.oversees && agent.oversees.length ? ` | oversees: ${agent.oversees.join(', ')}` : '';
+      const team = agent.team ? ` [${agent.team.name}]` : '';
+      console.log(`  ${id}: ${agent.name} (${agent.role})${team}${reports}${oversees}`);
     }
+
+    console.log('\nOrg Chart:');
+    const chart = paperclip.getOrgChart();
+    const printed = new Set();
+    function printTree(agentId, depth) {
+      if (printed.has(agentId)) return;
+      printed.add(agentId);
+      const info = chart[agentId];
+      if (!info) return;
+      console.log(`${'    '.repeat(depth)}└─ ${info.name} (${info.title})`);
+      for (const subId of info.oversees || []) {
+        printTree(subId, depth + 1);
+      }
+    }
+    console.log('  Dennis (Owner)');
+    for (const [id, info] of Object.entries(chart)) {
+      if (info.reportsTo === 'dennis') printTree(id, 2);
+    }
+
     console.log('\nValidation passed.');
   } catch (e) {
     console.error(`Validation failed: ${e.message}`);
